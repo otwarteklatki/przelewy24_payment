@@ -78,6 +78,22 @@ module Przelewy24Payment
     end
   end
 
+  def self.register_transaction_url
+    if @@mode == :production
+      'https://secure.przelewy24.pl/trnRegister'
+    else
+      'https://sandbox.przelewy24.pl/trnRegister'
+    end
+  end
+
+  def self.transaction_start_url
+    if @@mode == :production
+      'https://secure.przelewy24.pl/trnRequest'
+    else
+      'https://sandbox.przelewy24.pl/trnRequest'
+    end
+  end
+
   def self.verification_request_url
     if @@mode == :production
       'https://secure.przelewy24.pl/trnVerify'

@@ -61,6 +61,25 @@ module Przelewy24PaymentController
       return  Przelewy24Payment.parse_response response.body
     end
 
+    def przelewy24_register(params)
+      return '' unless Przelewy24Payment.check_ip(ip)
+      require 'net/https'
+      require 'net/http'
+      require 'open-uri'
+      require 'openssl'
+
+      params_new = Przelewy24Payment.prepare_form(params)
+
+      url = URI.parse(Przelewy24Payment.register_transaction_url)
+      req = Net::HTTP::Post.new(url.path,{"User-Agent" => "Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.9.2.10) Gecko/20100915 Ubuntu/10.04 (lucid) Firefox/3.6.10"})
+      req.form_data = params_new
+      con = Net::HTTP.new(url.host, 443)
+      con.use_ssl = true
+      con.verify_mode = OpenSSL::SSL::VERIFY_NONE
+      response = con.start {|http| http.request(req)}
+      return  Przelewy24Payment.parse_response response.body
+    end
+
   end # InstanceMethods
 
 

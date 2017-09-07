@@ -1,0 +1,17 @@
+PATH
+  remote: .
+  specs:
+    przelewy24_payment (0.2.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  przelewy24_payment!
+
+BUNDLED WITH
+   1.13.6
