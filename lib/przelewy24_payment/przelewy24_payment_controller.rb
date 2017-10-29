@@ -58,7 +58,7 @@ module Przelewy24PaymentController
       con.use_ssl = true
       con.verify_mode = OpenSSL::SSL::VERIFY_NONE
       response = con.start {|http| http.request(req)}
-      return  Przelewy24Payment.parse_response response.raw_post
+      return  Przelewy24Payment.parse_response response.body
     end
 
   end # InstanceMethods
