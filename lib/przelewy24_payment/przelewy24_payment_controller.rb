@@ -34,6 +34,9 @@ module Przelewy24PaymentController
     private
 
     def przelewy24_verify(params,ip)
+      # This line is not relevant because we only process donations in the CRM.
+      # If we ever need to process a p24 payment in exchange for something the line below must be uncommented or we could very easily get hacked.
+      # return '' unless Przelewy24Payment.check_ip(ip)
       require 'net/https'
       require 'net/http'
       require 'open-uri'
