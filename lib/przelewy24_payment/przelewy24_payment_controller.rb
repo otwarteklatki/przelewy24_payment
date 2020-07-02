@@ -24,6 +24,8 @@ module Przelewy24PaymentController
 
     def comeback
       result = przelewy24_verify(params,request.remote_ip)
+      if result == ''
+        payment_error(params, 'Unknown IP address reporting payment success', "request ip: #{request.remote_ip}")
       if result.error == "0"
         payment_success(params)
       else
