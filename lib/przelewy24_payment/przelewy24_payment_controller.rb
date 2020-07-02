@@ -26,7 +26,7 @@ module Przelewy24PaymentController
       result = przelewy24_verify(params,request.remote_ip)
       if result == ''
         payment_error(params, 'Unknown IP address reporting payment success', "request ip: #{request.remote_ip}")
-      if result.error == "0"
+      elsif  result.error == "0"
         payment_success(params)
       else
         payment_error(params, result.error, result.errorMessage)
