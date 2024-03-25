@@ -32,7 +32,7 @@ module Przelewy24Payment
   @@crc_key = ''
 
   mattr_accessor :allowed_ips
-  @@allowed_ips = %w(91.216.191.181 91.216.191.182 91.216.191.183 91.216.191.184 91.216.191.185 5.252.202.255)
+  @@allowed_ips = %w(91.216.191.181 91.216.191.182 91.216.191.183 91.216.191.184 91.216.191.185 5.252.202.255 5.252.202.254)
 
   mattr_accessor :allowed_languages
   @@allowed_languages = %w(pl en de es it)
